@@ -1,11 +1,14 @@
+import java.util.ArrayList;
 import java.util.StringTokenizer;
 public class Response extends Protocol {
-	String response;
+	ArrayList<String> headersArray;
+	ArrayList<String> response;
 	
 	public Response() {
-		message = "";
-		response = "";
+		response = new ArrayList<String>();
+		headersArray = new ArrayList<String>();
 		headers = "";
+		message = "";
 	}
 	
 	public void parssing() {
@@ -13,7 +16,7 @@ public class Response extends Protocol {
 		String nextToken = "";
 		boolean skip = true;
 		while(st.hasMoreTokens() ) {
-			nextToken = st.nextToken();
+			nextToken = st.nextToken("*");
 		//	System.out.println("next token is " + nextToken);
 		//	System.out.println("skip is " + skip );
 			if(skip) {
@@ -23,26 +26,31 @@ public class Response extends Protocol {
 				}
 			}
 			if(skip) {
-				headers += nextToken;
+				headersArray.add(nextToken);
 			}else {
-				response += nextToken;
+				response.add(nextToken);
 			}
 		}
 	} 
 	
 	public void doAction() {
-		if(!isPrintAll) {	
-			System.out.println("Not pribtAll");
-			message = response;
+		if(isPrintAll) {	
+			for(String l : headersArray) {
+				System.out.println(l);
+			}
 		}
-		System.out.println("message is " + message);
-		System.out.println("headers is " + headers);
-		StringTokenizer st = new StringTokenizer(message);
-		System.out.println("response is " + response);
-		System.out.println("*********************");
-		while(st.hasMoreTokens()) {
-			System.out.println(st.nextToken(" * "));
+		System.out.println();
+		for(String l : response) {
+			System.out.println(l);
 		}
+//		System.out.println("message is " + message);
+//		System.out.println("headers is " + headers);
+//		StringTokenizer st = new StringTokenizer(message);
+//		System.out.println("response is " + response);
+//		System.out.println("*********************");
+//		while(st.hasMoreTokens()) {
+//			System.out.println(st.nextToken(" * "));
+//		}
 	}
 
 }

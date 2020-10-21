@@ -10,17 +10,18 @@ public class Get extends Request{
 		stringPathUrl = "";
 		host = "";
 		fileName = "";
-		System.out.println("In constructor of Get");
+	//	System.out.println("In constructor of Get");
 	}
 	
 	
 	public void parssing() {
 		String nextToken = null;
+		isPrintAll =false;
 		while (input.hasMoreTokens()) {
 			nextToken = input.nextToken();
-			System.out.println("next token is " + nextToken);
+		//	System.out.println("next token is " + nextToken);
 			char firstChar = nextToken.charAt(0);
-			redirect=false;isPrintAll =false;
+			redirect=false;
 			boolean isError =false; 
 			if( (firstChar == '"') || (firstChar == '\'') || (firstChar =='h')) {
 				if(firstChar !='h') {
@@ -40,10 +41,10 @@ public class Get extends Request{
 					portNumber = url.getDefaultPort();
 				}
 				setPortNumber(portNumber);
-				System.out.println("stringUrl is " + stringUrl);System.out.println("stringPathUrl is " + stringPathUrl);System.out.println("query is " + query);System.out.println("port before is " + portNumber);System.out.println("host is " + host);
+			//	System.out.println("stringUrl is " + stringUrl);System.out.println("stringPathUrl is " + stringPathUrl);System.out.println("query is " + query);System.out.println("port before is " + portNumber);System.out.println("host is " + host);
 			}else if (firstChar == '-') {
 				char secondChar = nextToken.charAt(1);
-				System.out.println("secondChar is " + secondChar);
+			//	System.out.println("secondChar is " + secondChar);
 				switch(secondChar) {
 				case 'h':
 					nextToken = streamIfNeed(input);
@@ -58,7 +59,7 @@ public class Get extends Request{
 				case 'v':	
 					isPrintAll = true;
 					setPrintAll(true);
-					System.out.println("isPrintAll is " + isPrintAll); 
+			//		System.out.println("isPrintAll is " + isPrintAll); 
 					break;
 				case 'o':
 					nextToken = streamIfNeed(input);
@@ -86,15 +87,16 @@ public class Get extends Request{
 	
 	public void doAction() {
 		//message = requestLine + headers + "\r\n";
-		System.out.println("Hellllllllllllllo");
-		System.out.println("portNumber is " + portNumber);
+//		System.out.println("Hellllllllllllllo");
+//		System.out.println("portNumber is " + portNumber);
+//		System.out.println("isPrintAll is " + isPrintAll);
 		message += requestLine;
 		if(headers != null) {
 			message += headers;
 		}
 		message += "\r\n";
-		System.out.println("message is " + message);
-		System.out.println("headers is " + headers);
-		System.out.println("requestLine is " + requestLine);
+//		System.out.println("message is " + message);
+//		System.out.println("headers is " + headers);
+//		System.out.println("requestLine is " + requestLine);
 	}
 }

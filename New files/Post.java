@@ -36,11 +36,11 @@ public class Post extends Request {
 	}
 	
 	public void parssing() {
-		String nextToken = null;
+		String nextToken = null;isPrintAll =false;
 		while(input.hasMoreTokens()) {
 			nextToken = input.nextToken();
 			char firstChar = nextToken.charAt(0);
-			redirect=false; isPrintAll =false;
+			redirect=false; 
 			boolean isError =false,  eitherD_F = false;
 			if( (firstChar == '"') || (firstChar == '\'') || (firstChar == 'h')) {
 				if((firstChar != 'h')) {
@@ -58,14 +58,14 @@ public class Post extends Request {
 					portNumber = url.getDefaultPort();
 				}
 				setPortNumber(portNumber);
-				System.out.println("stringUrl is " + stringUrl);System.out.println("stringPathUrl is " + stringPathUrl);System.out.println("query is " + query);System.out.println("port before is " + portNumber);System.out.println("host is " + host);System.out.println("Now message is " + message);
+			//	System.out.println("stringUrl is " + stringUrl);System.out.println("stringPathUrl is " + stringPathUrl);System.out.println("query is " + query);System.out.println("port before is " + portNumber);System.out.println("host is " + host);System.out.println("Now message is " + message);
 			}else if (firstChar == '-') {
 				char secondChar = nextToken.charAt(1);
-				System.out.println("secondChar is " + secondChar);
+			//	System.out.println("secondChar is " + secondChar);
 				switch(secondChar) {
 					case 'h':
 						nextToken = streamIfNeed(input);
-						System.out.println("headers is " + headers);
+					//	System.out.println("headers is " + headers);
 						if(nextToken != null) {
 					//		takeHeadersValues(nextToken);
 							headers += nextToken + "\r\n";
@@ -74,7 +74,7 @@ public class Post extends Request {
 						}
 						break;
 					case 'v':
-						System.out.println("isPrintAll is " + isPrintAll);
+					//	System.out.println("isPrintAll is " + isPrintAll);
 						isPrintAll = true;
 						setPrintAll(true);
 						break;
@@ -145,12 +145,12 @@ public class Post extends Request {
 	} 
 
 	public void doAction() {
-		System.out.println("Hellllllllllllllo");
-		System.out.println("portNumber is " + portNumber);
-		System.out.println("message is " + message);
-		System.out.println("headers is " + headers);
-		System.out.println("requestLine is " + requestLine);
-		System.out.println("body is " + body);
+//		System.out.println("Hellllllllllllllo");
+//		System.out.println("portNumber is " + portNumber);
+//		System.out.println("message is " + message);
+//		System.out.println("headers is " + headers);
+//		System.out.println("requestLine is " + requestLine);
+//		System.out.println("body is " + body);
 		message = requestLine + headers + "\r\n" + body;
 	}
 }
