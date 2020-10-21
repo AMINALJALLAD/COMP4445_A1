@@ -1,3 +1,4 @@
+package ClientSide;
 import java.util.StringTokenizer;
 import java.io.PrintStream;
 import java.io.PrintWriter;
@@ -98,6 +99,7 @@ public class Httpc {
 			}
 			httpc.request.parssing();
 			httpc.request.doAction();  // create the message
+			System.out.println("The request type is " + httpc.request.requestType);
 			Socket socket = null;
 			Scanner streamInput = null;
 			PrintWriter streamOutPut = null;

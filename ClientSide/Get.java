@@ -1,3 +1,4 @@
+package ClientSide;
 import java.io.File;
 import java.util.StringTokenizer;
 
@@ -5,6 +6,7 @@ public class Get extends Request{
 	public Get(StringTokenizer st){
 		super();
 		input = st;
+		requestType = "get";
 		requestLine = "";
 		stringUrl = "";
 		stringPathUrl = "";

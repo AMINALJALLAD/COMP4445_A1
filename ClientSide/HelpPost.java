@@ -1,4 +1,4 @@
-
+package ClientSide;
 public class HelpPost extends Help {
 	
 	public void getHelp() {

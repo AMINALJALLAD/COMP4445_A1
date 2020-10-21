@@ -1,6 +1,6 @@
 package ServerSide;
 
-public class Response extends Httpf{
+public class Response {
 	public Response() {
 		
 	}

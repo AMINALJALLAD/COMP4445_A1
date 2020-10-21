@@ -1,3 +1,4 @@
+package ClientSide;
 import java.io.File;
 import java.io.FileInputStream;
 import java.util.Scanner;
@@ -9,7 +10,7 @@ public class Post extends Request {
 	public Post(StringTokenizer st){
 		super();
 		input = st;
-		requestLine = "POST ";
+		requestType = "post";
 		isInLineBody = false;
 		stringUrl = "";
 		requestLine = "";
@@ -50,7 +51,7 @@ public class Post extends Request {
 				}
 				url = getUrl(stringUrl);
 				stringPathUrl = url.getPath();
-				requestLine += stringPathUrl + " HTTP/1.0\r\n";
+				requestLine = "POST "+ stringPathUrl + " HTTP/1.0\r\n";
 				host = url.getHost();
 				query = url.getQuery();
 				portNumber = url.getPort();

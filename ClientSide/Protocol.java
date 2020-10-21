@@ -1,8 +1,10 @@
+package ClientSide;
 import java.util.StringTokenizer;
 import java.net.URL;
 
 public abstract class Protocol {
 	String message;
+	String requestType;
 	int portNumber;
 	String fileNameOutput;
 	boolean redirect;
